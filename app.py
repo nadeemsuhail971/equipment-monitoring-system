@@ -8,9 +8,14 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
-from src.analysis import calculate_health_score, evaluate_alerts
-from src.database import close_connection, get_db_connection, initialize_database, insert_seed_data
-from src.sensor_simulator import build_readings_for_machine
+try:
+    from src.analysis import calculate_health_score, evaluate_alerts
+    from src.database import close_connection, get_db_connection, initialize_database, insert_seed_data
+    from src.sensor_simulator import build_readings_for_machine
+except ModuleNotFoundError:
+    from analysis import calculate_health_score, evaluate_alerts
+    from database import close_connection, get_db_connection, initialize_database, insert_seed_data
+    from sensor_simulator import build_readings_for_machine
 
 
 def fetch_machine_rows(conn, db_type):

@@ -3,7 +3,10 @@ from __future__ import annotations
 import random
 from datetime import datetime, timedelta
 
-from src.config import MACHINE_SEED, THRESHOLD_LOOKUP
+try:
+    from src.config import MACHINE_SEED, THRESHOLD_LOOKUP
+except ModuleNotFoundError:
+    from config import MACHINE_SEED, THRESHOLD_LOOKUP
 
 
 MACHINE_TYPE_BASE = {

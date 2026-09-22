@@ -6,7 +6,10 @@ from typing import Any
 import mysql.connector
 from mysql.connector import Error as MySQLError
 
-from src.config import DB_SETTINGS
+try:
+    from src.config import DB_SETTINGS
+except ModuleNotFoundError:
+    from config import DB_SETTINGS
 
 
 def get_db_connection():
